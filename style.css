@@ -404,25 +404,15 @@ input.button {
   display: inline-block;
 }
 #logo {
+  transform: rotate(-90deg);
+  opacity: 0.5;
+  transform-origin: right bottom 0px;
   position: fixed;
-  background: #000;
-  border-radius: 100px;
-  width: 82px;
-  height: 82px;
-  bottom: 20px;
-  left: 20px;
+  bottom: 100px; 
+  left: 120px;
+  font-size: 50px;
 }
-#logo a {
-  border: 5px solid #fff;
-  border-radius: 100px;
-  width: 52px;
-  height: 52px;
-  margin: 10px;
-  float: left;
-}
-#logo a img {
-  width: 100%;
-}
+
 a.button.logout {
   float: right;
   padding: 6px 8px;

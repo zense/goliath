@@ -9,10 +9,8 @@ $content = $post_content?$post_content:"Poem Here";
 
 
 <aside id="logo" class="clearfix">
-		<a href="index.php?page=dashboard" style="color:#fff;">
-			<?php if (1==1): ?>
-	<h1 style="left: 30px; bottom: 0px; position: absolute;">P</h1>
-			<?php endif ?>
+		<a href="index.php?page=dashboard">
+	<h1>Goliath</h1>
 		</a>
 </aside>
 
@@ -62,11 +60,11 @@ $content = $post_content?$post_content:"Poem Here";
 				<?php wp_nonce_field( 'new-post' ); ?>
 			<?php endif; ?>
 
-			<textarea  id="post_title" class="text expand" name="post_title" placeholder="Title Here" size="60" tabindex="1" style="margin-top:90px;"><?php echo $post_title;?></textarea>
+			<div style="border-left:4px solid #1ABF89;"><textarea  id="post_title" class="text expand" name="post_title" placeholder="Title Here" size="60" tabindex="1" style="margin-top:90px;"><?php echo $post_title;?></textarea></div>
 			<div id="post_content_wrapper" style="position:fixed;left:200px;top:75px;bottom:75px;max-height:100%; visibility:hidden; display:hidden">
 				<textarea name="post_content" id="post_content" placeholder="Write post here" class="content" ><?php echo $post_content ?></textarea>
 			</div>
-		<article id="editor" contenteditable="true" data-toggle="pen" placeholder="Poem Here" style="margin-right:12.5%; padding: 20px 0px 200px 0px; outline:0px none;"  onblur="copyText()"><?php echo $content ?></article>
+		<article id="editor" contenteditable="true" data-toggle="pen" placeholder="Poem Here" style="margin-right:12.5%; padding: 20px 0px 200px 0px; outline:0px none; margin-top:-50px;"  onblur="copyText()"><?php echo $content ?></article>
 		<?php else: ?>
 			<p>Sorry, you don't have permission to post new article!</p>
 		<?php endif ?>

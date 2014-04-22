@@ -377,7 +377,7 @@ a:visited {
   text-decoration: none;
 }
 a:hover {
-  color: #0184ca;
+  color: #1ABF89;
 }
 a.button,
 input.button {
@@ -395,7 +395,7 @@ input.button {
 }
 .button:hover,
 .button.checked {
-  background-color: #0184ca;
+  background-color: #1ABF89;
 }
 .button .tick {
   display: none;
@@ -498,7 +498,7 @@ textarea {
 .ideas input.start_typing {
   border: 0;
   font-size: 1.3em;
-  color: #0184ca;
+  color: #1ABF89;
   width: 100%;
 }
 a.button.new-entry {
@@ -510,7 +510,7 @@ a.button.new-entry {
   padding: 1em 5% 1em;
   border-bottom: 1px solid #ccc;
   margin: 0.15em 0 0 0;
-  border-left: 4px solid #ADD8E6;
+  border-left: 4px solid #1ABF89;
 }
 .buttons {
   position: absolute;

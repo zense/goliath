@@ -60,7 +60,7 @@ $content = $post_content?$post_content:"Poem Here";
 				<?php wp_nonce_field( 'new-post' ); ?>
 			<?php endif; ?>
 
-			<div style="border-left:4px solid #1ABF89;"><textarea  id="post_title" class="text expand" name="post_title" placeholder="Title Here" size="60" tabindex="1" style="margin-top:90px;"><?php echo $post_title;?></textarea></div>
+			<textarea  id="post_title" class="text expand" name="post_title" placeholder="Title Here" size="60" tabindex="1" style="margin-top:90px;"><?php echo $post_title;?></textarea>
 			<div id="post_content_wrapper" style="position:fixed;left:200px;top:75px;bottom:75px;max-height:100%; visibility:hidden; display:hidden">
 				<textarea name="post_content" id="post_content" placeholder="Write post here" class="content" ><?php echo $post_content ?></textarea>
 			</div>

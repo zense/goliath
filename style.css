@@ -405,11 +405,11 @@ input.button {
 }
 #logo {
   transform: rotate(-90deg);
-  opacity: 0.5;
+  opacity: 0.4;
   transform-origin: right bottom 0px;
   position: fixed;
-  bottom: 100px; 
-  left: 120px;
+  bottom: 300px; 
+  left: -60px;
   font-size: 50px;
 }
 

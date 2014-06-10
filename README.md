@@ -1,7 +1,7 @@
 Goliath
 =======
 
-Alternative Wordpress Zen-Like Dashboard
+Alternative Wordpress Zen-Like Dashboard  
 Read more about Goliath on my blog till I get the time to properly update this Readme.
 
 [http://arkokoley.github.io/posts/goliath.html](http://arkokoley.github.io/posts/goliath.html)

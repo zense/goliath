@@ -23,6 +23,7 @@ $content = $post_content?$post_content:"Poem Here";
 	<form action="" method="post" enctype="multipart/form-data">
 
 				<div class="buttons">
+			<a id="showoptions" target="_blank" class="button">Options</button>
 			<?php if (!empty($_GET['id'])): ?>
 			<a href="<?php echo get_permalink($post_id) ?>" target="_blank" class="button preview">Preview</a>
 			<?php endif ?>
@@ -41,6 +42,43 @@ $content = $post_content?$post_content:"Poem Here";
 			<input type="submit" class="button" id="submit" value="Save"/>
 
 		</div><!-- .buttons -->
+
+<div id="options">
+		<h2>Options</h2>
+		<br/>
+			<?php
+			$datef = __( 'M j, Y @ G:i' );
+			if ( 0 != $id ) {
+			if ( 'future' == $post_status ) { // scheduled for publishing at a future date
+			$stamp = __('Scheduled for: <b>%1$s</b>');
+			} else if ( 'publish' == $post_status || 'private' == $post_status ) { // already published
+			$stamp = __('Published on: <b>%1$s</b>');
+			} else if ( '0000-00-00 00:00:00' == $post_date_gmt ) { // draft, 1 or more saves, no date specified
+			$stamp = __('Publish <b>immediately</b>');
+			} else if ( time() < strtotime( $post_date_gmt . ' +0000' ) ) { // draft, 1 or more saves, future date specified
+			$stamp = __('Schedule for: <b>%1$s</b>');
+			} else { // draft, 1 or more saves, date specified
+			$stamp = __('Publish on: <b>%1$s</b>');
+			}
+			$date = date_i18n( $datef, strtotime( $post_date ) );
+			} else { // draft (no saves, and thus no date specified)
+			$stamp = __('Publish <b>immediately</b>');
+			$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
+			}
+
+			if ( $can_publish ) : // Contributors don't get to choose the date of publish ?>
+			<div class="misc-pub-section curtime misc-pub-curtime">
+			<span id="timestamp">
+			<?php printf($stamp, $date); ?></span>
+			<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><?php _e('Edit') ?></a>
+			<div id="timestampdiv" class="hide-if-js"><?php touch_time(($action == 'edit'), 1); ?></div>
+			</div>
+
+			<?php endif; ?>
+			<?php do_action('post_submitbox_misc_actions'); ?>
+				<label>Tags</label><input id="fep-tags" name="tags" type="text" tabindex="2" autocomplete="off" value="<?php esc_attr_e( 'Add tags', 'simple-fep' ); ?>" onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Add tags', 'simple-fep' ) ); ?>') ? '' : this.value;" onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Add tags', 'simple-fep' ) ); ?>' : this.value;" /></p>
+	<a class="button" id="buttonClose">Close</a>
+</div>
 		<?php if ($err != ""): ?>
 			<?php echo "<p class='wps-notice'>".$err."</p>" ?>
 		<?php elseif (isset($_GET['edit']) and ($_GET['success'] == "success")): ?>
@@ -144,7 +182,23 @@ $content = $post_content?$post_content:"Poem Here";
 	    var output = document.getElementById("editor").innerHTML;
 	    document.getElementById("post_content").value = output;
 	}
-
     </script>
+
+<script type="text/javascript">
+      $(document).ready(function () {
+        //hide hider and popup_box
+        $("#options").hide();
+
+        //on click show the hider div and the message
+        $("#showoptions").click(function () {
+            $('#options').fadeIn("slow");
+        });
+        //on click hide the message and the
+        $("#buttonClose").click(function () {
+            $('#options').fadeOut("slow");
+        });
+
+        });
+</script>
 
 <?php include('footer.php'); ?>

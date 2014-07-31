@@ -58,11 +58,13 @@ if(!empty($_GET['id']) and isset($_GET['action']) and ($_GET['action'] == 'del')
 		$post_title = htmlentities($post_title, ENT_QUOTES, 'UTF-8');
 	
 		$post =	array(
-				'ID'	=> $_POST['id'],
+				'ID'	        => $_POST['id'],
 				'post_title'	=> $post_title,
 				'post_content'	=> $_POST['post_content'],
-				'post_status'	=> $_POST['post_status']
-		);
+				'post_status'	=> $_POST['post_status'],
+				'post_category[]' => $_POST['post_category[]'],
+				'post_tags[]'     => $_POST['tags[]']
+	 	);
 
 		
 		if ($_GET['id']) {
@@ -94,8 +96,9 @@ if(!empty($_GET['id']) and isset($_GET['action']) and ($_GET['action'] == 'del')
 	if (isset($_GET['id']) and (get_post($_GET['id']))) {
 		$post = get_post($_GET['id']);
 
-		$post_id 		= $post->ID;
+		$post_id 	= $post->ID;
 		$post_title 	= $post->post_title;
+		$post_tags[] 	= $post->tags_input;
 
 		
 		if (get_post_meta($_GET['id'], 'wp-svbtle-markdown', true)) {
@@ -118,6 +121,6 @@ if(!empty($_GET['id']) and isset($_GET['action']) and ($_GET['action'] == 'del')
 		$post_title = "";
 		$post_content = "";
 		$post_status = "";
-		
+		$post_tags[] = "";
 	}
 }

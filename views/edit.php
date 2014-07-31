@@ -1,6 +1,7 @@
 <?php
 
 require_once ADMIN_PATH . 'views/process_post.php'; 
+require_once ABSPATH . '/wp-admin/includes/template.php';
 nocache_headers();
 $page = "edit";
 include('header.php');
@@ -45,38 +46,17 @@ $content = $post_content?$post_content:"Poem Here";
 
 <div id="options">
 		<h2>Options</h2>
-		<br/>
-			<?php
-			$datef = __( 'M j, Y @ G:i' );
-			if ( 0 != $id ) {
-			if ( 'future' == $post_status ) { // scheduled for publishing at a future date
-			$stamp = __('Scheduled for: <b>%1$s</b>');
-			} else if ( 'publish' == $post_status || 'private' == $post_status ) { // already published
-			$stamp = __('Published on: <b>%1$s</b>');
-			} else if ( '0000-00-00 00:00:00' == $post_date_gmt ) { // draft, 1 or more saves, no date specified
-			$stamp = __('Publish <b>immediately</b>');
-			} else if ( time() < strtotime( $post_date_gmt . ' +0000' ) ) { // draft, 1 or more saves, future date specified
-			$stamp = __('Schedule for: <b>%1$s</b>');
-			} else { // draft, 1 or more saves, date specified
-			$stamp = __('Publish on: <b>%1$s</b>');
-			}
-			$date = date_i18n( $datef, strtotime( $post_date ) );
-			} else { // draft (no saves, and thus no date specified)
-			$stamp = __('Publish <b>immediately</b>');
-			$date = date_i18n( $datef, strtotime( current_time('mysql') ) );
-			}
-
-			if ( $can_publish ) : // Contributors don't get to choose the date of publish ?>
-			<div class="misc-pub-section curtime misc-pub-curtime">
-			<span id="timestamp">
-			<?php printf($stamp, $date); ?></span>
-			<a href="#edit_timestamp" class="edit-timestamp hide-if-no-js"><?php _e('Edit') ?></a>
-			<div id="timestampdiv" class="hide-if-js"><?php touch_time(($action == 'edit'), 1); ?></div>
-			</div>
-
-			<?php endif; ?>
-			<?php do_action('post_submitbox_misc_actions'); ?>
-				<label>Tags</label><input id="fep-tags" name="tags" type="text" tabindex="2" autocomplete="off" value="<?php esc_attr_e( 'Add tags', 'simple-fep' ); ?>" onfocus="this.value=(this.value=='<?php echo esc_js( __( 'Add tags', 'simple-fep' ) ); ?>') ? '' : this.value;" onblur="this.value=(this.value=='') ? '<?php echo esc_js( __( 'Add tags', 'simple-fep' ) ); ?>' : this.value;" /></p>
+		<hr/>
+<label>Categories</label>	
+	<div>
+	 <?php
+	   wp_category_checklist( $post_id);
+	?> 
+	   </div>
+<hr />
+        <h3><a name="graceful-degredation"></a>Tags:</h3>
+             <input name="tags" id="tags" value="">
+<hr />
 	<a class="button" id="buttonClose">Close</a>
 </div>
 		<?php if ($err != ""): ?>
@@ -200,5 +180,17 @@ $content = $post_content?$post_content:"Poem Here";
 
         });
 </script>
+
+<script>
+        $(function(){
+            //-------------------------------
+            // Minimal
+            //-------------------------------
+            $('#tags').tagit({
+                availableTags: sampleTags,
+                allowSpaces: true
+            });          
+        });
+    </script>
 
 <?php include('footer.php'); ?>

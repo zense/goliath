@@ -13,9 +13,9 @@
 	<script src="script.js?v=<?php echo filemtime(realpath(dirname(__FILE__)).'/../script.js'); ?>" type="text/javascript" charset="utf-8"></script>
 	
 	<link rel="stylesheet" href="style.css?v=<?php echo filemtime(realpath(dirname(__FILE__)).'/../style.css'); ?>" type="text/css" media="screen" title="no title" charset="utf-8">
-	    <link href="stylesheets/pen.css" rel="stylesheet">
-	    <link href="stylesheets/jquery.tagit.css" rel="stylesheet">
-	    <link href="stylesheets/tagit.ui-zendesk.css" rel="stylesheet">
+	    <link href="stylesheets/pen.css" rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8">
+	    <link href="stylesheets/jquery.tagit.css" rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8">
+	    <link href="stylesheets/tagit.ui-zendesk.css" rel="stylesheet" type="text/css" media="screen" title="no title" charset="utf-8">
 </head>
 
 <body class="page-<?php echo $page ?>">

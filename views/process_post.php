@@ -62,7 +62,7 @@ if(!empty($_GET['id']) and isset($_GET['action']) and ($_GET['action'] == 'del')
 				'post_title'	=> $post_title,
 				'post_content'	=> $_POST['post_content'],
 				'post_status'	=> $_POST['post_status'],
-				'post_category[]' => $_POST['post_category[]'],
+				'post_category[]' => $_POST['cat'],
 				'post_tags[]'     => $_POST['tags[]']
 	 	);
 

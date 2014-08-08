@@ -36,7 +36,7 @@ $content = $post_content?$post_content:"Poem Here";
 				<input type="radio" class="RadioClass" name="post_status" value="publish" <?php if($post_status == 'publish'): ?>checked="checked"<?php endif; ?> id="">
 				<a href="#" class="button <?php if($post_status == 'publish'): ?>checked<?php endif; ?>"><span class="tick">&#10004;</span> Public</a>
 			</div>
-			<a href="index.php?page=edit&action=del&id=<?php echo $_GET['id'] ?>" class="button remove">Remove</a>
+  	<a href="index.php?page=edit&action=del&id=<?php echo $_GET['id'] ?>" class="button remove">Remove</a>
 			
 			
 					
@@ -50,7 +50,7 @@ $content = $post_content?$post_content:"Poem Here";
 <label>Categories</label>	
 	<div>
 	 <?php
-	   wp_category_checklist( $post_id);
+	   wp_dropdown_categories( $post_id );
 	?> 
 	   </div>
 <hr />

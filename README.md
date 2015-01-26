@@ -1,6 +1,8 @@
 Goliath
 =======
 
+[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/arkokoley/goliath?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Alternative Wordpress Zen-Like Dashboard  
 Read more about Goliath on my blog till I get the time to properly update this Readme.
 

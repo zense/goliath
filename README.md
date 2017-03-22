@@ -1,38 +1,27 @@
-Goliath
-=======
+# goliath
 
-[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/arkokoley/goliath?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+> A Vue.js project
 
-Alternative Wordpress Zen-Like Dashboard  
-Read more about Goliath on my blog till I get the time to properly update this Readme.
+## Build Setup
 
-[http://arkokoley.github.io/posts/goliath.html](http://arkokoley.github.io/posts/goliath.html)
+``` bash
+# install dependencies
+npm install
 
-## Screenshots
+# serve with hot reload at localhost:8080
+npm run dev
 
-**Dashboard**
-![https://raw.githubusercontent.com/arkokoley/goliath/master/Screenshot1.png](https://raw.githubusercontent.com/arkokoley/goliath/master/Screenshot1.png)
+# build for production with minification
+npm run build
 
-**Editor**
-![https://raw.githubusercontent.com/arkokoley/goliath/master/Screenshot3.png](https://raw.githubusercontent.com/arkokoley/goliath/master/Screenshot3.png)
+# build for production and view the bundle analyzer report
+npm run build --report
 
-## Install
+# run unit tests
+npm run unit
 
-1. Download the files from here: [https://github.com/arkokoley/goliath/archive/master.zip](https://github.com/arkokoley/goliath/archive/master.zip).
-2. Unzip the files to a folder. Name it "dash".
-3. Upload "dash" to your WordPress root.
-	The folder layout should look like: 
-````		/-
-     |-wp-content
-     |-wp-admin
-     |-dash-
-           |-index.php
-           |-other Goliath files...
-     |-wp-config.php
-````  
-4. Profit! :D
+# run all tests
+npm test
+```
 
-## Licence
-
-MIT Licenced 
-Copyright (c) 2014 Gaurav Koley
+For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).

@@ -3,7 +3,6 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import WPAPI from 'wpapi'
 
 Vue.config.productionTip = false
 

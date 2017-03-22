@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import WPAPI from 'wpapi'
 /* eslint-disable */
 export default {
   name: 'hello',
@@ -16,11 +17,14 @@ export default {
       posts: []
     }
   },
+  created: function () {
+    this.getPosts();
+  },
   computed: {
     getPosts: function() {
       var self = this;
-      var wp = new WPAPI({ endpoint: 'http://src.wordpress-develop.dev/wp-json' })
-      wp.posts().get(function( err, data ) {
+      var wp = new WPAPI({ endpoint: 'https://demo.wp-api.org/wp-json/' })
+      wp.posts().param( 'before', new Date( '2016-09-22' ) ).get(function( err, data ) {
           if ( err ) {
               // handle err
           }

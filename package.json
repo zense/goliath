@@ -12,6 +12,8 @@
     "lint": "eslint --ext .js,.vue src test/unit/specs"
   },
   "dependencies": {
+    "lodash": "^4.17.4",
+    "marked": "^0.3.6",
     "vue": "^2.2.2",
     "vue-router": "^2.2.0",
     "wpapi": "^1.0.3"

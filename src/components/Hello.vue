@@ -1,57 +1,73 @@
 <template>
   <div class="hello">
-    <div v-for="post in posts">
-      <h1>{{ post.title }}</h1>
-    </div>
+<!--getting all the post .............-->
+
+  <div id="container">
+    <button v-on:click="POST">POST</button>
+  </div>
+
+  <!--visiting url part............................-->
+
+  <p>
+    Visit: <a v-bind:href="url">{{cleanUrl}}</a>
+  </p>
+  <input type="text" class="form-control" v-model="url" />
+  <button @click="humanizeUrl" class="btn btn-primary">Reference Site</button>
+
   </div>
 </template>
 
 <script>
 import WPAPI from 'wpapi'
 /* eslint-disable */
-export default {
+export default
+{
   name: 'hello',
-  data () {
-    return {
-      msg: 'Welcome to Your Vue.js App',
-      posts: []
-    }
+  data: function ()
+  {
+  return {
+      posts: [],
+      url:"",
+      cleanUrl:""
+  }
   },
-  created: function () {
-    this.getPosts();
+  created: function ()
+  {
+      this.getPosts();
   },
-  computed: {
-    getPosts: function() {
-      var self = this;
-      var wp = new WPAPI({ endpoint: 'https://demo.wp-api.org/wp-json/' })
-      wp.posts().param( 'before', new Date( '2016-09-22' ) ).get(function( err, data ) {
-          if ( err ) {
-              // handle err
+  computed:
+  {
+      getPosts: function()
+      {
+        var self = this;
+        var wp = new WPAPI({ endpoint: 'https://demo.wp-api.org/wp-json/' })
+        wp.posts().get(function( err, data )
+        {
+          if ( err )
+          {
           }
           self.posts = data
-      })
+        })
+      }
+  },
+  methods:
+  {
+    POST: function()
+    {
+      let full_list = `<tr><th>TITLE</th><th>CATEGORIES</th></tr>`;
+
+      for (let i = 0; i < this.posts.length-2; i++)
+      {
+        full_list +=`<tr><td> ${this.posts[i].title.rendered}</td><td> ${this.posts[i].categories.rendered}</td><td>${this.posts[i].content.rendered}</td></tr>`;
+      }
+       const contain = document.querySelector('#container');
+       contain.innerHTML = `<table cellspacing = "40"> ${full_list} </table>`;
+    },
+    humanizeUrl: function()
+    {
+      this.cleanUrl = this.url.replace(/^https?:\/\//, '').replace(/\/$/, '')
     }
-  }
+    }
 }
+
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>

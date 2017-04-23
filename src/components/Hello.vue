@@ -8,28 +8,18 @@
 
 <script>
 import WPAPI from 'wpapi'
-/* eslint-disable */
+
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App',
-      posts: []
+      msg: 'Welcome to Your Vue.js App'
     }
   },
-  created: function () {
-    this.getPosts();
-  },
-  computed: {
-    getPosts: function() {
-      var self = this;
-      var wp = new WPAPI({ endpoint: 'https://demo.wp-api.org/wp-json/' })
-      wp.posts().param( 'before', new Date( '2016-09-22' ) ).get(function( err, data ) {
-          if ( err ) {
-              // handle err
-          }
-          self.posts = data
-      })
+  asyncComputed: {
+    posts: function () {
+      var wp = new WPAPI({ endpoint: 'http://localhost/wordpress/index.php/wp-json/' })
+      return wp.posts().then(response => response)
     }
   }
 }

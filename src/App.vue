@@ -1,70 +1,50 @@
 <template>
   <div id="app">
+    <figure id="loading">&nbsp;</figure>
+    <nav id="overlord" class="dashboard">
+      <figure id="logo_top" class="">
+        <a href="/">Goliath</a>
+      </figure>
+      <h2 id="nav_title" class="">Dashboard</h2>
+      <figure id="hamburger">
+        <a href="#menu" id="hamburger_button">Menu</a>
+      </figure>
+      <ul id="dropdown" class="">
+        <li class="dropdown_logo">
+          <a href="/" class="logoize">svbtle</a>
+        </li>
+        <li><a href="https://svbtle.com/dashboard">dashboard</a></li>
+        <li><a href="https://svbtle.com/write">new entry</a></li>
+        <li><a href="http://arkokoley.svbtle.com" target="_blank">your blog</a></li>
+        <li><a href="https://svbtle.com/subscribers">subscribers</a></li>
+        <li><a href="https://svbtle.com/settings">settings</a></li>
+        <li><a href="/help">help</a></li>
+        <li><a rel="nofollow" data-method="delete" href="/logout">log out</a></li>
+      </ul>
+    </nav>
+    <div id="whiteout"></div>
     <router-view></router-view>
-    <br  />
-
-    <!-- text area........................-->
-
-    <textarea :value="input" @input="update"></textarea>
-    <div v-html="compiledMarkdown"></div>
+    <div id="lights">&nbsp;</div>
+    <Footer/>
   </div>
 </template>
 
 <script>
-import marked from 'marked'
-import _ from 'lodash'
 export default
 {
   name: 'app',
   data: function () {
-    return {
-      input: ''
-    }
-  },
-  computed: {
-    compiledMarkdown: function () {
-      return marked(this.input, { sanitize: true })
-    }
-  },
-  methods: {
-    update: _.debounce(function (e) {
-      this.input = e.target.value
-    }, 300)
+    return {}
   }
 }
 </script>
 
 <style scoped>
-div > textarea {
-  display: inline-block;
-  width: 500px;
-  height : 700px;
-  vertical-align: top;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  padding: 0 20px;
+figure#logo_top a:hover {
+  background-color: #38BEA0;
+  background-image: url('https://a.svbtleusercontent.com/6jFISFHNx7mHWpbOWGsXx6d257PQ_medium.png');
 }
-
-textarea {
-  border: none;
-  border-right: 1px solid #ccc;
-  resize: none;
-  outline: none;
-  background-color: #f6f6f6;
-  font-size: 14px;
-  font-family: 'Monaco', courier, monospace;
-  padding: 20px;
-}
-
-code {
-  color: #f66;
-}
-
-blockquote {
-  font-size: 1.25rem;
-  padding-left: 20px;
-  margin-left: 20px;
-  border-left: 4px solid gray;
+figure#logo_top:hover {
+  border-color: #38BEA0;
 }
 </style>

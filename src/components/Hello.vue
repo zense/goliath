@@ -1,13 +1,23 @@
 <template>
   <div class="hello">
-    <div v-for="post in posts">
-      <h1>{{ post.title }}</h1>
-    </div>
+<!--getting all the post .............-->
+
+  <div id="container">
+    <button v-on:click="POST">POST</button>
+  </div>
+
+  <!--visiting url part............................-->
+
+  <p>
+    Visit: <a v-bind:href="url">{{cleanUrl}}</a>
+  </p>
+  <input type="text" class="form-control" v-model="url" />
+  <button @click="humanizeUrl" class="btn btn-primary">Reference Site</button>
+
   </div>
 </template>
 
 <script>
-import WPAPI from 'wpapi'
 
 export default {
   name: 'hello',
@@ -34,14 +44,5 @@ h1, h2 {
 ul {
   list-style-type: none;
   padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
 }
 </style>

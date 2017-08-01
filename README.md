@@ -15,10 +15,24 @@ Change the path to directory where you cloned the repo and do an npm install
 ```
 npm install
 ```
+or
+
+Install yarn
+```
+npm install -g yarn
+
+yarn install
+```
 # 3. Start a local server
 
 ```
 npm start
+```
+
+or
+
+```
+yarn start
 ```
 
 # 4. Run the application
@@ -30,3 +44,6 @@ Open localhost:3000 in Chrome
 ```
 npm run storybook
 ```
+
+
+For Reference, [Full Stack React + GraphQL](https://dev-blog.apollodata.com/full-stack-react-graphql-tutorial-582ac8d24e3b)

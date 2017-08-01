@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "apollo-client": "^1.9.0-1",
+    "graphql-tag": "^2.4.2",
     "react": "^15.6.1",
+    "react-apollo": "^1.4.9",
     "react-dom": "^15.6.1",
     "react-router": "^3.0.5",
     "react-router-dom": "^4.1.2",
